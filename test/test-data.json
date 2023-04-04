@@ -1,0 +1,154 @@
+[
+    {
+        "story": "Face-book chief operating officer Sheryl Sandberg and Anna Maria Chavez, chief of American Girl Scouts, are leading a campaign to discourage the use of the word \"bossy\". Does the term destroy the confidence of young girls? \n\nThe campaign claims that terms like \"bossy\" are improperly applied to females, preventing schoolgirls from seeing themselves as future \"leaders\". From its first application, the word has been definitely connected more with women than with men. It first appeared in 1882, according to the Oxford English Dictionary, mentioning \"a lady manager who was extremely bossy\". As late as 2008, the word appeared in reference to females four times more often than males, claim the Ban Bossy campaigners. \"To me, the reference is always is association with women,\" says Helen Trim, director of Fresh Minds. \"I have three brothers and my family still call me 'bossy' today.\" Her father is the only other family member who could be considered in that way, says Trim, but nobody would ever call him so. \n\nSome educators recommend that the word should be reclaimed, rather than banned.\"But the thing with'bossy' is that there's an infantile element to it,\"says Sara Mills, professor at Sheffield University. \"You think of 'bossy' as being like a little kid who's claiming more than he has the right to claim.\" \n\nIt's not just\"bossy\"under fire.\"Pushy\"is another target. The implication is that women shouldn't present themselves as powerful and confident. Mills suggests, which some women are willing to listen to and accept. Trim points out that many modern female business role models are able to be bosses without being labeled'bossy'.And she rarely,if ever, hears the word used within her company. But she says that the damage may be dome much earlier in a woman's life.\"It does come about from those early teenage years.\"she says.\"I think it's impossible to ban a word, but if people are replacing it with words like'confidence'or'assertiveness',we would all be in a much better place.\"",
+        "QA": [
+            {
+                "answer": "chief of American Girl Scouts",
+                "questions": [
+                    "Who is teaming up with Sheryl Sandberg to launch a campaign against the use of the word \"bossy\"? ",
+                    "Who has partnered with Sheryl Sandberg to discourage the use of the term \"bossy\"? ",
+                    "Who is working with Sheryl Sandberg to promote a movement against the use of the word \"bossy\"? ",
+                    "Who, along with Sheryl Sandberg, is leading a campaign to discourage the use of the word \"bossy\"? ",
+                    "Who is collaborating with Sheryl Sandberg to advocate against the usage of \"bossy\"?"
+                ]
+            },
+            {
+                "answer": "leading a campaign",
+                "questions": [
+                    "What is the campaign led by Sheryl Sandberg and Anna Maria Chavez about? ",
+                    "How are Sheryl Sandberg and Anna Maria Chavez trying to address the issue of the word \"bossy\"? ",
+                    "What is the purpose of the campaign against the use of the word \"bossy\" led by Sandberg and Chavez? ",
+                    "Why is Sheryl Sandberg and Anna Maria Chavez targeting the word \"bossy\"? ",
+                    "In what way are Sandberg and Chavez discouraging the use of the word \"bossy\"?"
+                ]
+            },
+            {
+                "answer": "to discourage the use of the word \"bossy\"",
+                "questions": [
+                    "What is the aim of Sheryl Sandberg and Anna Maria Chavez's campaign concerning the word \"bossy\"? ",
+                    "What are Sandberg and Chavez trying to achieve by leading this campaign against the use of the term \"bossy\"? ",
+                    "What is the mission behind the Ban Bossy campaign spearheaded by Sandberg and Chavez? ",
+                    "Why are Sandberg and Chavez calling for a reduction in the use of the word \"bossy\"? ",
+                    "For what purpose are Sandberg and Chavez raising awareness about the negative impact of the word \"bossy\" on young girls?"
+                ]
+            },
+            {
+                "answer": "prevents schoolgirls from seeing themselves as future \"leaders",
+                "questions": [
+                    "1. What is the aim of the Sheryl Sandberg and Anna Maria Chavez-led campaign to discourage the use of \"bossy\"? ",
+                    "2. How does the use of the term \"bossy\" affect young girls' confidence, according to Sandberg and Chavez? ",
+                    "3. Is there a gender bias in the usage of the word \"bossy\", and if so, in what way? ",
+                    "4. What do some educators suggest should be done with the word \"bossy\" instead of banning it, and why? ",
+                    "5. At what age do some experts believe the damage caused by being called \"bossy\" may occur, according to the article? \""
+                ]
+            },
+            {
+                "answer": "destroys their confidence",
+                "questions": [
+                    "1. In what way does the use of the word \"bossy\" affect the confidence of young girls?",
+                    "2. How does the word \"bossy\" prevent schoolgirls from seeing themselves as future leaders?",
+                    "3. Why is the term \"bossy\" improperly applied to females, according to the Ban Bossy campaigners?",
+                    "4. How has the word \"bossy\" been historically connected more with women than with men?",
+                    "5. At what age does the use of the word \"bossy\" begin to affect a woman's perception of herself as a leader?"
+                ]
+            },
+            {
+                "answer": "1882",
+                "questions": [
+                    "When was the word \"bossy\" first recorded in the Oxford English Dictionary? ",
+                    "\"When did the campaign to discourage the use of the word \"bossy\" start?\"",
+                    "\"At what time in history was the term 'bossy' commonly associated with women?\" ",
+                    "\"What is the connection between the word 'bossy' and the confidence of young girls?\" ",
+                    "\"In the Ban Bossy campaign, what is the aim of discouraging the use of the word 'bossy' on young girls?\""
+                ]
+            },
+            {
+                "answer": "a lady manager who was extremely bossy",
+                "questions": [
+                    "When did \"bossy\" first appear in the English language, according to the Oxford English Dictionary? ",
+                    "\"When was \"bossy\" first associated with a \"lady manager\" according to the Oxford English Dictionary? ",
+                    "\"When did the term \"bossy\" begin to be more frequently used to describe women than men, according to the Ban Bossy campaigners? ",
+                    "\"At what point did the term \"bossy\" become more commonly connected with females than males, according to the Ban Bossy campaigners? ",
+                    "\"When was the first historical reference to a woman being described as \"bossy\", according to the Oxford English Dictionary?\""
+                ]
+            },
+            {
+                "answer": "Oxford English Dictionary",
+                "questions": [
+                    "What is the origin of the word \"bossy\"?",
+                    "Where was the first recorded use of the word \"bossy\"?",
+                    "Which source recorded the first usage of the word \"bossy\"?",
+                    "What is the earliest known usage of the word \"bossy\" and where was it recorded?",
+                    "What is the etymology of the word \"bossy\" and where did it come from?"
+                ]
+            },
+            {
+                "answer": "no",
+                "questions": [
+                    "1) Are there any other words besides \"bossy\" that could damage the confidence of young girls?",
+                    "2) Is \"bossy\" the sole harmful word when it comes to discouraging female leadership?",
+                    "3) Are there any other terms commonly associated with females that have negative connotations?",
+                    "4) Does the use of derogatory language impact the leadership aspirations of girls and women beyond just the term \"bossy\"?",
+                    "5) Are there any societal norms or attitudes that contribute to the negative portrayal of female leadership, beyond just the use of certain words?"
+                ]
+            },
+            {
+                "answer": "Pushy",
+                "questions": [
+                    "What is the campaign led by Sheryl Sandberg and Anna Maria Chavez focused on? ",
+                    "What is the target of the campaign to discourage the use of certain words towards females? ",
+                    "What is the implication of using words like \"bossy\" and \"pushy\" towards women and girls? ",
+                    "What are some other words that are being discouraged from use towards women and girls? ",
+                    "What is the importance of replacing words like \"bossy\" with \"confidence\" and \"assertiveness\"?"
+                ]
+            },
+            {
+                "answer": "it should be reclaimed, rather than banned",
+                "questions": [
+                    "What is the belief of some educators regarding the use of the word \"bossy\"? \"",
+                    "\"How do some educators recommend handling the use of the word \"bossy\"? \"",
+                    "\"What does the suggestion from some educators entail when it comes to the word \"bossy\"? \"",
+                    "\"What alternative words do some educators suggest to replace \"bossy\"? \"",
+                    "\"How does the belief of some educators relate to empowering young girls to become leaders? \""
+                ]
+            },
+            {
+                "answer": "no",
+                "questions": [
+                    "Are all women in leadership positions considered bossy? ",
+                    "\"Is being bossy a common trait among female bosses? ",
+                    "\"Is it fair to label all women in positions of authority as bossy? ",
+                    "\"Do people assume that women in leadership roles are naturally bossy? ",
+                    "\"Do gender stereotypes lead to the assumption that all female bosses are bossy?\""
+                ]
+            },
+            {
+                "answer": "Sheffield University",
+                "questions": [
+                    "What is the name of the university where Sara Mills is a professor?",
+                    "Which educational institution is Sara Mills affiliated with as a professor?",
+                    "In which university is Sara Mills a professor?",
+                    "To which university is Sara Mills associated as a professor?",
+                    "At which university does the professor Sara Mills teach?"
+                ]
+            }
+        ]
+    },
+    {
+        "story": "Russo-Ukrainian War, the Chinese and American narratives, diametrically opposed!\n\nThe U.S. narrative - Russia and Ukraine started fighting because Russia 'invaded' a neighboring country. The reason there hasn't been a ceasefire after a year is because China is secretly funding Russia's war. China and Russia are doing this to threaten the national security of the US and Europe and to threaten the Western 'democratic' system. So the blame is all on China and Russia.\n\nChina's narrative - Russia and Ukraine started the war because the U.S. engaged in NATO expansion to the east and fanned the arch fire. 3 year has passed and the war between Russia and Ukraine has not yet ceased because the US is nakedly selling arms to Ukraine and instigating confrontation between the two sides. The U.S. did this in order to mess up Asia and Europe, harvest European allies, maintain the dollar hegemony, weaken Russia, so as to free up their hands to confront China. So the blame is all on the U.S. side.\n\nThe Chinese are more receptive to the Chinese narrative and the Americans are more receptive to the American narrative, why?\n\nBecause both narratives point to the [primary anxiety] of their own people -\n\nthe Chinese public is most worried about the United States engaging in hegemony and threatening world peace.\nThe U.S. public is most worried about China joining Russia and threatening U.S. security.\nAnxiety-provoking narratives get traffic, even without evidence! Especially in the age of social media.\n\nIt is hard for the Chinese narrative to convince Americans, and it is hard for the American narrative to convince the Chinese.\n\nBecause both sides will say that the other side doesn't have enough evidence, so it's fake news!\n\nThe U.S. side says China supplied weapons to Russia, but can't get proof;\n\nChina side says the U.S. side is encouraging confrontation between the two sides and pushing for an escalation of the war, something the people of the world have seen together.",
+        "QA": [
+            {
+                "answer": "3",
+                "questions": ["How many years has the Russian-Ukrainian war been going on?", "??"]
+            },
+            {
+                "answer": "China joins Russia and threatens US security.",
+                "questions": ["What worries the American public most?", "??"]
+            },
+            {
+                "answer": "3 year has passed and the war between Russia and Ukraine has not yet ceased because the US is nakedly selling arms to Ukraine and instigating confrontation between the two sides.",
+                "questions": ["Why does China say that the responsibility lies with the United States?", "??"]
+            }
+        ]
+    }
+]
