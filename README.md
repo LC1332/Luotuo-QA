@@ -1,2 +1,9 @@
-# Temp-CamelBell-Q
-report for CamelBell-Q
+# 驼铃QA : 仅使用6B语言模型的阅读理解系统
+
+孙骜, 李鲁鲁
+
+这是一个简短的repo，完成之后会被合并到CamelBell完整的项目中
+
+## 引言
+
+本文是对于我们驼铃QA模型，一个基于GLM-6B的中文阅读理解模型，的简短技术汇报。
