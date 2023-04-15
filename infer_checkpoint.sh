@@ -5,9 +5,9 @@ if [ -z "$CHECKPOINT" ]; then
     exit 1
 fi
 
-$CHECKPOINT_CONFIG="$CHECKPOINT/adapter_config.json"
+CHECKPOINT_CONFIG="$CHECKPOINT/adapter_config.json"
 
-$MODEL_REVISION="969290547e761b20fdb96b0602b4fd8d863bbb85"
+MODEL_REVISION="969290547e761b20fdb96b0602b4fd8d863bbb85"
 
 if [ ! -f "$CHECKPOINT_CONFIG" ]; then
     echo "Checkpoint $CHECKPOINT_CONFIG does not exist, loading and saving..."

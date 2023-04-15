@@ -17,6 +17,7 @@ class FineTuneArguments:
     model_revision: str = field(default=None)
     lora_rank: int = field(default=8)
     save_resume_from_checkpoint: str = field(default=None)
+    device_map: str=field(default=None)
 
 
 class CastOutputToFloat(nn.Sequential):
@@ -24,7 +25,7 @@ class CastOutputToFloat(nn.Sequential):
         return super().forward(x).to(torch.float32)
 
 
-def data_collator(tokenizer, features: list) -> dict:
+def data_collator(tokenizer, features: list, to_device = None) -> dict:
     len_ids = [len(feature["input_ids"]) for feature in features]
     longest = max(len_ids)
     input_ids = []
@@ -41,6 +42,9 @@ def data_collator(tokenizer, features: list) -> dict:
         input_ids.append(_ids)
     input_ids = torch.stack(input_ids)
     labels = torch.stack(labels_list)
+    if to_device:
+        input_ids = input_ids.to(to_device)
+        labels = labels.to(to_device)
     return {
         "input_ids": input_ids,
         "labels": labels,
@@ -54,10 +58,10 @@ class ModifiedTrainer(Trainer):
             labels=inputs["labels"],
         ).loss
 
-def load_train_model(model_path, lora_rank):
+def load_train_model(model_path, lora_rank, model_revision: str = None, cache_dir: str = None, device_map: str="auto"):
     # init model
     model = AutoModel.from_pretrained(
-        model_path, load_in_8bit=True, trust_remote_code=True, device_map="auto"
+        model_path, trust_remote_code=True, device_map=device_map, revision=model_revision, cache_dir = cache_dir
     )
     model.gradient_checkpointing_enable()
     model.enable_input_require_grads()
@@ -86,11 +90,11 @@ def main():
     ).parse_args_into_dataclasses()
 
     tokenizer = AutoTokenizer.from_pretrained(fine_tune_args.model_path, trust_remote_code=True, revision=fine_tune_args.model_revision)
-    model = load_train_model(fine_tune_args.model_path, fine_tune_args.lora_rank)
+    model = load_train_model(fine_tune_args.model_path, fine_tune_args.lora_rank, model_revision=fine_tune_args.model_revision, device_map=fine_tune_args.device_map)
 
     # load dataset
     dataset = datasets.load_from_disk(fine_tune_args.dataset_path)
-    print(f"\n{len(dataset)=}\n")
+    print(f"dataset len: {len(dataset)=}\n")
 
     # start train
     if fine_tune_args.save_resume_from_checkpoint is not None and fine_tune_args.save_resume_from_checkpoint != "":
