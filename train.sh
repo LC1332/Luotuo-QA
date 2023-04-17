@@ -1,3 +1,5 @@
+set -e
+
 # rm -rf runs
 # rm -rf output/runs
 
@@ -12,6 +14,6 @@ python train.py \
     --device_map "auto" \
     --remove_unused_columns false \
     --logging_steps 50 \
-    --save_total_limit 10 \
+    --save_total_limit 4 \
     --output_dir output \
     --model_revision "969290547e761b20fdb96b0602b4fd8d863bbb85"
