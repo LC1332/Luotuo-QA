@@ -47,7 +47,7 @@ def main(
     from transformers import AutoTokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True, revision = model_revision)
     import transformers
-    from cover2jsonl import format_example_list
+    from dataset_tokenize_rows import format_example_list
     config = transformers.AutoConfig.from_pretrained(
         model_name, trust_remote_code=True, device_map='auto')
     with torch.no_grad():

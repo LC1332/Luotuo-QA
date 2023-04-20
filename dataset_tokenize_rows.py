@@ -10,6 +10,35 @@ from transformers import PreTrainedTokenizer
 
 IGNORE_INDEX = -100
 
+def get_context_item(story: str, qa: dict):
+    for q in qa['questions']:
+        if q == "" or q == " ":
+            return None, None, None
+    if len(qa['questions']) < 2:
+        return None, None, None
+    origin_question = qa['questions'][0]
+    context = f"""给你下面的文本和问题，请先给出一个对应问题的同义转述，再给出问题的答案。
+文本为：{story}
+原始问题为：{origin_question}
+"""
+    target = f"""问题转义为：{qa['questions'][1]}
+答案为：{qa['answer']}"""
+    return context, origin_question, target
+
+def format_example_list(example: dict) -> list[dict]:
+    res = []
+    for qa in example['QA']:
+        context, origin_question, target = get_context_item(example['story'], qa)
+        if context is not None:
+            res.append({"context": context, "target": target, "origin_question": origin_question})
+    return res
+
+def show_sample_info(example: dict):
+    print("### sample info ###")
+    print(example)
+    # show all keys
+    print(example.keys())
+
 def preprocess(tokenizer: PreTrainedTokenizer, config, example, max_seq_length):
     context_tokens = tokenizer.encode(
         example["context"],
@@ -27,9 +56,8 @@ def preprocess(tokenizer: PreTrainedTokenizer, config, example, max_seq_length):
         seq_len=len(context_tokens),
     )
 
-def process_jsonl_lines(lines, tokenizer: PreTrainedTokenizer, config, max_seq_length, skip_overlength=False):
-    for line in tqdm(lines):
-        example = json.loads(line)
+def process_jsonl_lines(examples, tokenizer: PreTrainedTokenizer, config, max_seq_length, skip_overlength=False):
+    for example in tqdm(examples):
         feature = preprocess(tokenizer, config, example, max_seq_length)
         if skip_overlength and len(feature["input_ids"]) > max_seq_length:
             continue
@@ -57,14 +85,21 @@ def main():
     config = transformers.AutoConfig.from_pretrained(
         args.model_name, trust_remote_code=True, device_map='auto')
 
-    splits = read_jsonl(args.jsonl_path)
+    jsonl_lines = read_jsonl(args.jsonl_path)
+
+    if len(jsonl_lines) > 0:
+        show_sample_info(json.loads(jsonl_lines[0]))
+
+    examples = []
+    for line in tqdm(jsonl_lines, desc="decoding jsonl examples..."):
+        examples += format_example_list(json.loads(line))
+
     dataset = datasets.Dataset.from_generator(
-        lambda lines: process_jsonl_lines(lines, tokenizer, config, args.max_seq_length, args.skip_overlength),
+        lambda examples: process_jsonl_lines(examples, tokenizer, config, args.max_seq_length, args.skip_overlength),
         num_proc=args.num_proc,
-        gen_kwargs={"lines": splits},
+        gen_kwargs={"examples": examples},
     )
     dataset.save_to_disk(args.save_path)
-
 
 if __name__ == "__main__":
     main()
