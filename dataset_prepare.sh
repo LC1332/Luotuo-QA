@@ -3,7 +3,7 @@ set -e
 dataset_name=qa-cn
 
 python dataset_cover2jsonl.py --data_path /media/nas/ai/dataset/luotuo/${dataset_name}.json --save_path data/${dataset_name}-origin.jsonl
-python dataset_jsonl_clean.py --data_path data/${dataset_name}-origin.jsonl --save_path data/${dataset_name}.jsonl
+python dataset_jsonl_clean.py --data_path data/${dataset_name}-origin.jsonl --save_path data/${dataset_name}.jsonl --trash_path data/${dataset_name}-trash.jsonl
 
 python dataset_tokenize_rows.py \
     --jsonl_path data/${dataset_name}.jsonl \

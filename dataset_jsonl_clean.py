@@ -60,39 +60,60 @@ def check_by_blacklist_keyword(content: str) -> bool:
             return False
     return True
 
-def clean_example(example: dict) -> list[dict]:
+def formate_translate_str(content: str) -> str:
+    cut_after = "翻译结果是："
+    if cut_after in content:
+        content = content[content.index(cut_after) + len(cut_after):].strip()
+    # reg remove 1. or 1） or 1、 or 2. or 2） or 2、
+    content = re.sub('^\d+[\.()）]\s*', '', content).strip()
+    content = re.sub('^\S*翻译\S*结果\S*[是为：]+', '', content).strip()
+    content = re.sub('^\S*翻译\S*中文\S*[是为：]+', '', content).strip()
+    return content
+
+def clean_example(example: dict):
     res = {}
+    drop_qa = []
+    story = formate_translate_str(example["story"])
     resQA = []
-    for qa in example['QA']:
+    for qa in example["QA"]:
+        answer = formate_translate_str(qa["answer"])
         questions = []
-        for q in qa['questions']:
-            q = q.strip()
-            # reg remove 1. or 1） or 1、 or 2. or 2） or 2、
-            q = re.sub('^\d+[\.()）]\s*', '', q)
-            q = q.strip()
+        for q in qa["questions"]:
+            q = formate_translate_str(q)
             if q == "" or "？" not in q or not check_by_blacklist_keyword(q):
                 continue
             questions.append(q)
-        if len(questions) < 2:
-            continue
-        if not check_by_blacklist_keyword(qa['answer']):
+        if len(questions) < 2 or not check_by_blacklist_keyword(answer):
+            drop_qa.append({
+                "answer": answer,
+                "questions": questions,
+            })
             continue
         resQA.append({
-            "answer": qa['answer'].strip(),
+            "answer": answer,
             "questions": questions,
         })
 
-    if len(example['story']) > 0 and check_by_blacklist_keyword(example['story']) and len(resQA) > 0:
-        res['story'] = example['story']
-        res['QA'] = resQA
+    if len(story) > 0 and check_by_blacklist_keyword(story) and len(resQA) > 0:
+        res["story"] = story
+        res["QA"] = resQA
     else:
-        return []
-    return [res]
+        return [], [{
+            "story": story,
+            "QA": drop_qa,
+        }]
+    if len(drop_qa) > 0:
+        return [res], [{
+            "story": story,
+            "QA": drop_qa,
+        }]
+    return [res], []
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data_path", type=str, default="data/train-data.json")
-    parser.add_argument("--save_path", type=str, default="data/train-data.jsonl")
+    parser.add_argument("--data_path", type=str, default="")
+    parser.add_argument("--save_path", type=str, default="")
+    parser.add_argument("--trash_path", type=str, default="")
     args = parser.parse_args()
     
     from dataset_tokenize_rows import read_jsonl, show_sample_info
@@ -103,14 +124,24 @@ def main():
         show_sample_info(json.loads(jsonl_lines[0]))
 
     examples = []
+    trash_examples = []
     for line in tqdm(jsonl_lines, desc="cleaning jsonl examples..."):
-        examples += clean_example(json.loads(line))
+        original_example = json.loads(line)
+        cleaned_example, drop_examples = clean_example(original_example)
+        examples += cleaned_example
+        trash_examples += drop_examples
 
     import os
-    os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
-    with open(args.save_path, 'w', encoding="utf-8") as f:
-        for example in tqdm(examples, desc="saving cleaned examples jsonl..."):
-            f.write(json.dumps(example, ensure_ascii=False) + '\n')
+    if args.save_path != "":
+        os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
+        with open(args.save_path, 'w', encoding="utf-8") as f:
+            for example in tqdm(examples, desc="saving cleaned examples jsonl..."):
+                f.write(json.dumps(example, ensure_ascii=False) + '\n')
+    if args.trash_path != "":
+        os.makedirs(os.path.dirname(args.trash_path), exist_ok=True)
+        with open(args.trash_path, 'w', encoding="utf-8") as f:
+            for example in tqdm(trash_examples, desc="saving trash examples jsonl..."):
+                f.write(json.dumps(example, ensure_ascii=False) + '\n')
 
 if __name__ == "__main__":
     main()

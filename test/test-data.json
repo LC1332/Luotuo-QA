@@ -135,19 +135,23 @@
         ]
     },
     {
-        "story": "Russo-Ukrainian War, the Chinese and American narratives, diametrically opposed!\n\nThe U.S. narrative - Russia and Ukraine started fighting because Russia 'invaded' a neighboring country. The reason there hasn't been a ceasefire after a year is because China is secretly funding Russia's war. China and Russia are doing this to threaten the national security of the US and Europe and to threaten the Western 'democratic' system. So the blame is all on China and Russia.\n\nChina's narrative - Russia and Ukraine started the war because the U.S. engaged in NATO expansion to the east and fanned the arch fire. 3 year has passed and the war between Russia and Ukraine has not yet ceased because the US is nakedly selling arms to Ukraine and instigating confrontation between the two sides. The U.S. did this in order to mess up Asia and Europe, harvest European allies, maintain the dollar hegemony, weaken Russia, so as to free up their hands to confront China. So the blame is all on the U.S. side.\n\nThe Chinese are more receptive to the Chinese narrative and the Americans are more receptive to the American narrative, why?\n\nBecause both narratives point to the [primary anxiety] of their own people -\n\nthe Chinese public is most worried about the United States engaging in hegemony and threatening world peace.\nThe U.S. public is most worried about China joining Russia and threatening U.S. security.\nAnxiety-provoking narratives get traffic, even without evidence! Especially in the age of social media.\n\nIt is hard for the Chinese narrative to convince Americans, and it is hard for the American narrative to convince the Chinese.\n\nBecause both sides will say that the other side doesn't have enough evidence, so it's fake news!\n\nThe U.S. side says China supplied weapons to Russia, but can't get proof;\n\nChina side says the U.S. side is encouraging confrontation between the two sides and pushing for an escalation of the war, something the people of the world have seen together.",
+        "story": "北京时间2月13日凌晨,2023年ATP250达拉斯站男单决赛。中国球员吴易昺先输一盘后挽救4个赛点并兑现第5个冠军点,最终以6(4)-7/7-6(3)/7-6(12)逆转惊险击败赛会5号种子、美国大炮伊斯内尔,就此改写历史,成为公开赛年代首位夺得ATP巡回赛男单冠军的中国大陆球员,并创造中国大陆球员的男单最高排名!\n\n第一盘比赛,吴易昺在第12局错过了一个盘点,并最终抢七惜败;第二盘则挽救一个赛点后抢七局3-0领先开局,且以7-6(3)扳回一盘;第三盘决胜盘,在关键的第9局15-40落后情况下凭借连续的高质量发球逆转保发,之后比赛再次进入抢七,抢七局依然胶着,吴易昺又挽救了3个赛点,并兑现了自己的第5个冠军点,就此锁定冠军!历史性一刻到来时,吴易昺瞬间躺倒在地。全场比赛,伊斯内尔轰出了44记Ace球,但最终在主场依然输给了吴易昺。\n\n凭借具有突破意义的这一冠,吴易昺在本周入账250个积分和112125美元的冠军奖金,在周一最新一期的男单排名榜单上,创中国大陆男网历史新高排名—第58位。根据比赛计划,吴易昺原本要出战本周进行的ATP250德拉海滩站,不过在达拉斯夺冠后,吴易昺因身体疲劳退出本站赛事,他的签位由幸运落败者约翰森替代。\n",
         "QA": [
             {
-                "answer": "3",
-                "questions": ["How many years has the Russian-Ukrainian war been going on?", "??"]
+                "answer": "他终于得偿所愿",
+                "questions": ["吴易昺倒地的原因是什么?", "??"]
             },
             {
-                "answer": "China joins Russia and threatens US security.",
-                "questions": ["What worries the American public most?", "??"]
+                "answer": "北京时间不是当地时间",
+                "questions": ["为什么这个比赛要在凌晨打？", "??"]
             },
             {
-                "answer": "3 year has passed and the war between Russia and Ukraine has not yet ceased because the US is nakedly selling arms to Ukraine and instigating confrontation between the two sides.",
-                "questions": ["Why does China say that the responsibility lies with the United States?", "??"]
+                "answer": "伊斯内尔",
+                "questions": ["这场赛事中，谁是吴易昺的有力竞争者？", "??"]
+            },
+            {
+                "answer": "吴易昺",
+                "questions": ["这场赛事中，谁是伊斯内尔的有力竞争者？", "??"]
             }
         ]
     }
