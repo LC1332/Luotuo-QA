@@ -13,7 +13,7 @@ def get_model(model_name: str, peft_path: str = ""):
     return model
 
 from transformers import PreTrainedTokenizer
-def gen(model, tokenizer: PreTrainedTokenizer, input_text, config, max_length=1024):
+def gen(model, tokenizer: PreTrainedTokenizer, input_text, max_length=1024):
     ids = tokenizer.encode(
         input_text,
         truncation=True,
@@ -48,8 +48,6 @@ def main(
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True, revision = model_revision)
     import transformers
     from dataset_tokenize_rows import format_example_list
-    config = transformers.AutoConfig.from_pretrained(
-        model_name, trust_remote_code=True, device_map='auto')
     with torch.no_grad():
         test_data_output = [[]]*len(instructions)
         for idx, item in enumerate(instructions):
@@ -68,7 +66,7 @@ def main(
             for example_idx, example in enumerate(example_list):
                 context = example["context"]
                 # print(f"### {idx+1}(origin context):\n{context}")
-                answer = gen(model, tokenizer, context, config)
+                answer = gen(model, tokenizer, context)
                 print(f"### {idx+1}(origin): ###\n{answer}")
                 test_data_output[idx]["questions"][example_idx][model_name] = answer
         # close model
@@ -79,7 +77,7 @@ def main(
             for example_idx, example in enumerate(example_list):
                 context = example["context"]
                 # print(f"### {idx+1}(lora context):\n{context}")
-                answer = gen(model, tokenizer, context, config)
+                answer = gen(model, tokenizer, context)
                 print(f"### {idx+1}(lora): ###\n{answer}")
                 test_data_output[idx]["questions"][example_idx][model_name+peft_path] = answer
     json.dump(test_data_output, open(test_data_output_path, "w", encoding="utf-8"), ensure_ascii=False, indent=4)

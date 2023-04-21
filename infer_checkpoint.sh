@@ -1,3 +1,5 @@
+set -e
+
 CHECKPOINT=$1
 
 if [ -z "$CHECKPOINT" ]; then
@@ -12,7 +14,7 @@ MODEL_REVISION="969290547e761b20fdb96b0602b4fd8d863bbb85"
 if [ ! -f "$CHECKPOINT_CONFIG" ]; then
     echo "Checkpoint $CHECKPOINT_CONFIG does not exist, loading and saving..."
     python train.py \
-        --dataset_path data/qa \
+        --dataset_path data/qa-cn \
         --lora_rank 16 \
         --per_device_train_batch_size 16 \
         --gradient_accumulation_steps 1 \
