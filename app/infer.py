@@ -46,8 +46,15 @@ def main(
     instructions = json.load(open(test_data_path, encoding="utf-8"))
     from transformers import AutoTokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True, revision = model_revision)
-    import transformers
-    from dataset_tokenize_rows import format_example_list
+
+    import os
+    import sys
+    import inspect
+    current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+    parent_dir = os.path.dirname(current_dir)
+    sys.path.insert(0, parent_dir) 
+    from train.dataset_tokenize_rows import format_example_list
+
     with torch.no_grad():
         test_data_output = [[]]*len(instructions)
         for idx, item in enumerate(instructions):
