@@ -1,3 +1,47 @@
+<a name="BigTitle"></a>
+
+
+English | [快速上手](#quickstart) | [数据](#data) | [赞助](#sponsorship) | [人员](#contributor) | [引用](#cite) 
+
+# 骆驼QA: Better Conversational Question Answering Model with Answer Completion
+
+骆驼QA是孙骜, 廖健生, 陈舒年, 李鲁鲁开发的，阅读理解并问答的语言模型。
+
+
+<details>
+  <summary> 每一个作者都是第一作者，顺序是随机的。(点这里具体)</summary>
+
+李鲁鲁发起了项目，提出了拆分问题和使用Prompt Engineering生成更Diverse问题的方法。
+
+孙骜完成了Prompt的设计，并增广了CoQA数据集，提出了基于问题转化的训练方案
+
+廖健生编写了训练架构，并完成了模型的训练。
+
+陈舒年（将要）完成了Q-A的Embedding初步实验，并编写了可视化
+
+</details>
+
+TODO: 生成一张图片
+
+骆驼QA是Luotuo(骆驼)的子项目之一，后者由李鲁鲁，冷子昂，陈启源发起的
+
+## 发布TODO
+
+- [ ] README页面装修
+- [ ] inference脚本 colab
+- [ ] Gradio脚本 colab
+- [ ] (opt)更好的一个Gradio设计
+- [ ] 更多截图
+
+
+
+
+
+---
+
+
+
+
 # 驼铃QA : 仅使用6B语言模型的阅读理解系统
 
 孙骜, 李鲁鲁
