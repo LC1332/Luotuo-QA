@@ -11,19 +11,30 @@ example_story = """北京时间2月13日凌晨,2023年ATP250达拉斯站男单�
 
 example_question = "这场赛事中，谁是伊斯内尔的有力竞争者？"
 
-def infer(model, tokenizer, story, question, origin_model = None):
-    context = f"""给你下面的文本和问题，请先给出一个对应问题的同义转述，再给出问题的答案。
+def format_context(story, question):
+    return f"""给你下面的文本和问题，请先给出一个对应问题的同义转述，再给出问题的答案。
 文本为：{story}
 原始问题为：{question}
 """
+
+def infer_gen(model, tokenizer, context):
     out = gen(model, tokenizer, context)
     question_as = out.split("答案为:")[0].split("问题转义为:")[1]
     answer = out.split("答案为:")[1]
+    return out, question_as, answer
+
+def infer(model, tokenizer, story, question, origin_model = None):
+    context = format_context(story, question)
     origin_out = ""
     if origin_model is not None:
         origin_out = gen(origin_model, tokenizer, context)
-    print(f"### {context}: ###\n Origin: {origin_out}\n Lora: {out}")
-    return question_as, answer, origin_out
+    out, question_as, answer = infer_gen(model, tokenizer, context)
+    
+    context_v2 = format_context(story, question_as)
+    out_v2, question_as_v2, answer_v2 = infer_gen(model, tokenizer, context_v2)
+    
+    print(f"### {context}: ###\n Origin: {origin_out}\n Lora: {out}\n Lora^2: {out_v2}\n")
+    return origin_out, question_as, answer, question_as_v2, answer_v2
 
 def main(
     share: bool = False,
@@ -59,13 +70,21 @@ def main(
                     with gr.Column():
                         # UI: origin model output
                         with gr.Row():
-                            origin_answer = gr.Textbox(label="ChatGLM-6B", lines=2, interactive=False)
+                            origin_answer = gr.Textbox(label=model_name+":", lines=2, interactive=False)
                     with gr.Column():
                         # UI: Lora output
-                        with gr.Row():
-                            question_as = gr.Textbox(label="Question escapes to", lines=2, interactive=False)
-                        with gr.Row():
-                            answer = gr.Textbox(label="Answer", lines=2, interactive=False)
+                        with gr.Box():
+                            with gr.Row():
+                                question_as = gr.Textbox(label="Question escapes to:", lines=2, interactive=False)
+                            with gr.Row():
+                                answer = gr.Textbox(label="Answer", lines=2, interactive=False)
+                    with gr.Column():
+                        # UI: Lora output^2
+                        with gr.Box():
+                            with gr.Row():
+                                question_as_v2 = gr.Textbox(label="Question^2 escapes to:", lines=2, interactive=False)
+                            with gr.Row():
+                                answer_v2 = gr.Textbox(label="Answer^2:", lines=2, interactive=False)
         def inner_infer(story, question):
             return infer(model, tokenizer, story, question, origin_model = origin_model)
         submit.click(
@@ -75,9 +94,11 @@ def main(
                     question,
                 ],
                 outputs=[
+                    origin_answer,
                     question_as,
                     answer,
-                    origin_answer,
+                    question_as_v2,
+                    answer_v2,
                 ],
                 show_progress=True,
             )
