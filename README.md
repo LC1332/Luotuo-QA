@@ -5,7 +5,7 @@ English | [快速上手](#quickstart) | [数据](#data) | [赞助](#sponsorship)
 
 # 骆驼QA: Better Conversational Question Answering Model with Answer Completion
 
-骆驼QA是孙骜, 廖健生, 陈舒年, 李鲁鲁开发的，阅读理解并问答的语言模型。
+骆驼QA是孙骜, 廖健生, 黄泓森 , 陈舒年, 李鲁鲁开发的，阅读理解并问答的语言模型。
 
 
 <details>
@@ -16,6 +16,8 @@ English | [快速上手](#quickstart) | [数据](#data) | [赞助](#sponsorship)
 孙骜完成了Prompt的设计，并增广了CoQA数据集，提出了基于问题转化的训练方案
 
 廖健生编写了训练架构，并完成了模型的训练。
+
+黄泓森翻译了增广后的CoQA数据。
 
 陈舒年（将要）完成了Q-A的Embedding初步实验，并编写了可视化
 
