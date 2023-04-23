@@ -46,6 +46,83 @@ English | [快速上手](#quickstart) | [数据](#data) | [赞助](#sponsorship)
 | 交互界面 | - | 基于0.1模型，用Gradio开发的交互界面 |
 
 
+
+<a name="data"></a>
+
+## 数据
+
+
+
+我们准备公开这批数据，正在研究CoQA和OpenAI的数据协议，并且准备申请共享这批数据的表格和网站，之后就会释放这批数据。
+
+
+<a name="sponsorship"></a>
+
+## 赞助(Sponsorship) 骆驼项目
+
+在训练骆驼嵌入的时候，完全使用社区捐赠的经费购买的远程服务器
+
+所有的CoQA的数据增广和翻译都使用了社区捐赠的经费购买了OpenAI的API。
+
+如果你有兴趣赞助骆驼项目，请点击[主项目](https://github.com/LC1332/Luotuo-Chinese-LLM#%E8%B5%9E%E5%8A%A9sponsorships)或者查看[赞助表单](https://github.com/LC1332/Luotuo-Chinese-LLM/blob/main/data/Sponsorship_and_balance.md)
+
+If you are interested in sponsoring the [Luotuo Project](https://github.com/LC1332/Luotuo-Chinese-LLM#%E8%B5%9E%E5%8A%A9sponsorships), please click on the [major project](https://github.com/LC1332/Luotuo-Chinese-LLM) or view the [sponsorship form](https://github.com/LC1332/Luotuo-Chinese-LLM/blob/main/data/Sponsorship_and_balance.md).
+
+[回到开头](#BigTitle)
+
+<a name="contributor"></a>
+
+## 人员
+
+更详细的整个骆驼项目相关的人员信息，请查看[骆驼项目的主页](https://github.com/LC1332/Luotuo-Chinese-LLM#%E8%B4%A1%E7%8C%AE%E8%80%85contributors)
+
+每个作者都是第一作者，顺序是随机的。
+
+李鲁鲁发起了项目，提出了拆分问题和使用Prompt Engineering生成更Diverse问题的方法。
+
+孙骜完成了Prompt的设计，并增广了CoQA数据集，提出了基于问题转化的训练方案
+
+廖健生编写了训练架构，并完成了模型的训练。
+
+黄泓森翻译了增广后的CoQA数据。
+
+陈舒年（将要）完成了Q-A的Embedding初步实验，并编写了可视化
+
+[回到开头](#BigTitle)
+
+
+<a name="cite"></a>
+
+## 引用
+
+如果您在项目中使用了我们的模型、代码或者数据，请引用下面第一篇文章。
+
+Please cite the repo if you use the data or code in this repo.
+
+```
+@misc{alpaca,
+  author={Ao Sun, Jianshen Liao, Hongsen Huang, Shunian Chen, Cheng Li},
+  title = {Luotuo-QA: Better Conversational Question Answering Model with Answer Completion},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/LC1332/Luotuo-QA}},
+}
+```
+
+```
+@misc{alpaca,
+  author={Ziang Leng, Qiyuan Chen and Cheng Li},
+  title = {Luotuo: An Instruction-following Chinese Language model, LoRA tuning on LLaMA},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/LC1332/Luotuo-Chinese-LLM}},
+}
+```
+
+[回到开头](#BigTitle)
+
 ---
 
 
