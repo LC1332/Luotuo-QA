@@ -36,6 +36,16 @@ English | [快速上手](#quickstart) | [数据](#data) | [赞助](#sponsorship)
 
 + 如果你感到这个页面对你有帮助，拜托您去我们[骆驼的主页](https://github.com/LC1332/Luotuo-Chinese-LLM)也点上star，非常感谢！
 
+<a name="quickstart"></a>
+
+## 快速上手
+
+|  | Colab链接 | 细节 |
+| --- | --- | :--- |
+| 测试脚本 | - | 当前的骆驼QA为0.1模型 |
+| 交互界面 | - | 基于0.1模型，用Gradio开发的交互界面 |
+
+
 ---
 
 
