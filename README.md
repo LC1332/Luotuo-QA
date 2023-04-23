@@ -21,9 +21,22 @@ English | [快速上手](#quickstart) | [数据](#data) | [赞助](#sponsorship)
 
 </details>
 
-TODO: 生成一张图片
-
 骆驼QA是Luotuo(骆驼)的子项目之一，后者由李鲁鲁，冷子昂，陈启源发起的
+
+<p align="center">
+    <img src="image/projBar.png">
+</p>
+
+骆驼QA是指
+
+
++ If you find this helpful, please star our major repo [Luotuo(骆驼)](https://github.com/LC1332/Luotuo-Chinese-LLM), Thanks Very Much
+
++ 如果你感到这个页面对你有帮助，拜托您去我们[骆驼的主页](https://github.com/LC1332/Luotuo-Chinese-LLM)也点上star，非常感谢！
+
+---
+
+
 
 ## 发布TODO
 
