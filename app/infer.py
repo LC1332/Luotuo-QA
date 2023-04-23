@@ -1,6 +1,14 @@
 import torch
 torch.set_default_tensor_type(torch.cuda.HalfTensor)
 
+example_story = """北京时间2月13日凌晨,2023年ATP250达拉斯站男单决赛。中国球员吴易昺先输一盘后挽救4个赛点并兑现第5个冠军点,最终以6(4)-7/7-6(3)/7-6(12)逆转惊险击败赛会5号种子、美国大炮伊斯内尔,就此改写历史,成为公开赛年代首位夺得ATP巡回赛男单冠军的中国大陆球员,并创造中国大陆球员的男单最高排名!
+
+第一盘比赛,吴易昺在第12局错过了一个盘点,并最终抢七惜败;第二盘则挽救一个赛点后抢七局3-0领先开局,且以7-6(3)扳回一盘;第三盘决胜盘,在关键的第9局15-40落后情况下凭借连续的高质量发球逆转保发,之后比赛再次进入抢七,抢七局依然胶着,吴易昺又挽救了3个赛点,并兑现了自己的第5个冠军点,就此锁定冠军!历史性一刻到来时,吴易昺瞬间躺倒在地。全场比赛,伊斯内尔轰出了44记Ace球,但最终在主场依然输给了吴易昺。
+
+凭借具有突破意义的这一冠,吴易昺在本周入账250个积分和112125美元的冠军奖金,在周一最新一期的男单排名榜单上,创中国大陆男网历史新高排名—第58位。根据比赛计划,吴易昺原本要出战本周进行的ATP250德拉海滩站,不过在达拉斯夺冠后,吴易昺因身体疲劳退出本站赛事,他的签位由幸运落败者约翰森替代。"""
+
+example_question = "这场赛事中，谁是伊斯内尔的有力竞争者？"
+
 def get_model(model_name: str, peft_path: str = ""):
     print("Loading model..." + model_name + ("" if peft_path == "" else (" lora:"+peft_path)))
     from transformers import AutoModel
@@ -11,6 +19,31 @@ def get_model(model_name: str, peft_path: str = ""):
         from peft import PeftModel
         model = PeftModel.from_pretrained(model, peft_path)
     return model
+
+def format_context(story, question):
+    return f"""给你下面的文本和问题，请先给出一个对应问题的同义转述，再给出问题的答案。
+文本为：{story}
+原始问题为：{question}
+"""
+
+def infer_gen(model, tokenizer, context):
+    out = gen(model, tokenizer, context)
+    question_as = out.split("答案为:")[0].split("问题转义为:")[1]
+    answer = out.split("答案为:")[1]
+    return out, question_as, answer
+
+def infer(model, tokenizer, story, question, origin_model = None):
+    context = format_context(story, question)
+    origin_out = ""
+    if origin_model is not None:
+        origin_out = gen(origin_model, tokenizer, context)
+    out, question_as, answer = infer_gen(model, tokenizer, context)
+    
+    context_v2 = format_context(story, question_as)
+    out_v2, question_as_v2, answer_v2 = infer_gen(model, tokenizer, context_v2)
+    
+    print(f"### {context}: ###\n Origin: {origin_out}\n Lora: {out}\n Lora^2: {out_v2}\n")
+    return origin_out, question_as, answer, question_as_v2, answer_v2
 
 from transformers import PreTrainedTokenizer
 def gen(model, tokenizer: PreTrainedTokenizer, input_text, max_length=1024):
