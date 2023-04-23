@@ -21,13 +21,13 @@ English | [快速上手](#quickstart) | [数据](#data) | [赞助](#sponsorship)
 
 </details>
 
-骆驼QA是Luotuo(骆驼)的子项目之一，后者由李鲁鲁，冷子昂，陈启源发起的
+骆驼QA是[Luotuo(骆驼)](https://github.com/LC1332/Luotuo-Chinese-LLM)的子项目之一，后者由李鲁鲁，冷子昂，陈启源发起。
 
 <p align="center">
     <img src="image/projBar.png">
 </p>
 
-骆驼QA是指
+骆驼QA是指给定一段特定的文本，用户针对文本中的内容，进行一个提问。语言模型试图理解文本中的内容，对用户的问题进行回答。这里我们从陈丹琦学姐参与的CoQA数据集出发，基于唐杰老师实验室发布的GLM6B模型，建立了中文的骆驼QA模型。
 
 
 + If you find this helpful, please star our major repo [Luotuo(骆驼)](https://github.com/LC1332/Luotuo-Chinese-LLM), Thanks Very Much
