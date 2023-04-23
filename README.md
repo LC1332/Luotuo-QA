@@ -150,14 +150,26 @@ Please cite the repo if you use the data or code in this repo.
 
 
 
-## 发布TODO
+## TODO
 
-- [ ] README页面装修
+- [x] README页面装修
 - [ ] inference脚本 colab
 - [ ] Gradio脚本 colab
 - [ ] (opt)更好的一个Gradio设计
 - [ ] 更多截图
+- [ ] 在colab完成之后，做一些有趣的例子Good & Bad
 
+以上是4/30之前
+
+---
+
+以下是之后
+
+- [ ] 进一步清理翻译的CoQA数据，引入翻译API进行核对补充，引入中英文Embedding进行进一步比对
+- [ ] 训练得到0.3模型
+- [ ] 寻找一些没有QA的语料（1万文本以上，最好3个domain），让GPT生成QA，加入到训练数据中
+- [ ] 训练得到0.7模型
+- [ ] 进行初步的搜索+QA的尝试
 
 
 
