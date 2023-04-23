@@ -45,6 +45,13 @@ English | [快速上手](#quickstart) | [数据](#data) | [赞助](#sponsorship)
 | 测试脚本 | - | 当前的骆驼QA为0.1模型 |
 | 交互界面 | - | 基于0.1模型，用Gradio开发的交互界面 |
 
+## 例子输出
+
+
+
+## 训练
+
+我们利用Alpaca-LoRA和GLM6B+LoRA（驼铃）的方案，在增广后的CoQA英文和中文数据集上，各训练了一个英文和中文的模型。
 
 
 <a name="data"></a>
