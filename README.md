@@ -47,6 +47,9 @@ English | [快速上手](#quickstart) | [数据](#data) | [赞助](#sponsorship)
 
 ## 例子输出
 
+<p align="center">
+  <img src="https://github.com/LC1332/Luotuo-Chinese-LLM/blob/main/image/QAResult.png">
+</p>
 
 
 ## 训练
