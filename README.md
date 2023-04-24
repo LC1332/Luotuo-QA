@@ -42,8 +42,8 @@ English | [快速上手](#quickstart) | [数据](#data) | [赞助](#sponsorship)
 
 |  | Colab链接 | 细节 |
 | --- | --- | :--- |
-| 测试脚本 | - | 当前的骆驼QA为0.1模型 |
-| 交互界面 | - | 基于0.1模型，用Gradio开发的交互界面 |
+| 测试脚本 | <a href="https://colab.research.google.com/github/LC1332/Luotuo-QA/blob/main/colab/LuotuoQA_simple.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> | 当前的骆驼QA为0.1模型 |
+| 交互界面 | <a href="https://colab.research.google.com/github/LC1332/Luotuo-QA/blob/main/colab/LuotuoQA_Gradio.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> | 基于0.1模型，用Gradio开发的交互界面 |
 
 ## 例子输出
 
