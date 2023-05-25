@@ -32,8 +32,6 @@ def main(
                             # UI: Submit button
                             submit = gr.Button("Ask", label="Submit", interactive=True, variant="primary")
         with gr.Row():
-            question_answer = gr.Textbox(label="Answer", lines=2, interactive=False)
-        with gr.Row():
             with gr.Box():
                 with gr.Row():
                     with gr.Column():
@@ -44,21 +42,10 @@ def main(
                         # UI: Lora output
                         with gr.Box():
                             with gr.Row():
-                                question_as = gr.Textbox(label="Question escapes to:", lines=2, interactive=False)
-                            with gr.Row():
                                 answer = gr.Textbox(label="Answer", lines=2, interactive=False)
-                    with gr.Column():
-                        # UI: Lora output^2
-                        with gr.Box():
-                            with gr.Row():
-                                question_as_v2 = gr.Textbox(label="Question^2 escapes to:", lines=2, interactive=False)
-                            with gr.Row():
-                                answer_v2 = gr.Textbox(label="Answer^2:", lines=2, interactive=False)
         def inner_infer(story, question):
-            question_answer = question_answer_infer(model, tokenizer, story, question)
-            yield question_answer, "", "", "", "", ""
-            for infer_out in infer_yield(model, tokenizer, story, question, origin_model = origin_model):
-                yield question_answer, *infer_out
+            for origin_out, answer in infer_yield(model, tokenizer, story, question, origin_model = origin_model):
+                yield origin_out, answer
         submit.click(
                 fn=inner_infer,
                 inputs=[
@@ -66,12 +53,8 @@ def main(
                     question,
                 ],
                 outputs=[
-                    question_answer,
                     origin_answer,
-                    question_as,
                     answer,
-                    question_as_v2,
-                    answer_v2,
                 ]
             )
     b.queue().launch(prevent_thread_lock=True, share=share, server_port=server_port)

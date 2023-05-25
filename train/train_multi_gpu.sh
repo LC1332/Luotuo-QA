@@ -17,6 +17,8 @@ deepspeed --num_gpus 2 $(dirname "$0")/train.py \
     --remove_unused_columns false \
     --logging_steps 50 \
     --save_total_limit 4 \
+    --max_seq_length 1024 \
+    --dataloader_num_workers 4 \
     --output_dir $(dirname "$0")/../output \
     --model_revision "969290547e761b20fdb96b0602b4fd8d863bbb85" \
     --deepspeed $(dirname "$0")/ds_config_zero3.json

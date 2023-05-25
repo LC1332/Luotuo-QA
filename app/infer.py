@@ -9,7 +9,7 @@ example_story = """北京时间2月13日凌晨,2023年ATP250达拉斯站男单�
 
 凭借具有突破意义的这一冠,吴易昺在本周入账250个积分和112125美元的冠军奖金,在周一最新一期的男单排名榜单上,创中国大陆男网历史新高排名—第58位。根据比赛计划,吴易昺原本要出战本周进行的ATP250德拉海滩站,不过在达拉斯夺冠后,吴易昺因身体疲劳退出本站赛事,他的签位由幸运落败者约翰森替代。"""
 
-example_question = "这场赛事中，谁是伊斯内尔的有力竞争者？"
+example_question = "谁会参加ATP250德拉海滩站？"
 
 def get_model(model_name: str, peft_path: str = ""):
     print("Loading model..." + model_name + ("" if peft_path == "" else (" lora:"+peft_path)))
@@ -22,48 +22,38 @@ def get_model(model_name: str, peft_path: str = ""):
     return model
 
 def format_context(story, question):
-    return f"""给你下面的文本和问题，请先给出一个对应问题的同义转述，再给出问题的答案。
+    return f"""给你下面的文本和问题，请给出问题的答案。
 文本为：{story}
-原始问题为：{question}
+问题为：{question}
 """
 
 def infer_gen(model, tokenizer, context):
     out = gen(model, tokenizer, context)
-    question_as = out.split("答案为:")[0].split("问题转义为:")[1]
     answer = out.split("答案为:")[1]
-    return out, question_as, answer
+    return out, answer
 
 def infer(model, tokenizer, story, question, origin_model = None):
     context = format_context(story, question)
     origin_out = ""
     if origin_model is not None:
         origin_out = gen(origin_model, tokenizer, context)
-    out, question_as, answer = infer_gen(model, tokenizer, context)
+    out, answer = infer_gen(model, tokenizer, context)
     
-    context_v2 = format_context(story, question_as)
-    out_v2, question_as_v2, answer_v2 = infer_gen(model, tokenizer, context_v2)
-    
-    print(f"### {context}: ###\n Origin: {origin_out}\n Lora: {out}\n Lora^2: {out_v2}\n")
-    return origin_out, question_as, answer, question_as_v2, answer_v2
+    print(f"### {context}: ###\n Origin: {origin_out}\n Lora: {out}\n")
+    return origin_out, answer
 
 def infer_yield(model, tokenizer, story, question, origin_model = None):
     context = format_context(story, question)
     origin_out = ""
     if origin_model is not None:
         origin_out = gen(origin_model, tokenizer, context)
-    yield origin_out, "", "", "", ""
-    out, question_as, answer = infer_gen(model, tokenizer, context)
-    yield origin_out, question_as, answer, "", ""
-    
-    context_v2 = format_context(story, question_as)
-    out_v2, question_as_v2, answer_v2 = infer_gen(model, tokenizer, context_v2)
-    
-    print(f"### {context}: ###\n Origin: {origin_out}\n Lora: {out}\n Lora^2: {out_v2}\n")
-    yield origin_out, question_as, answer, question_as_v2, answer_v2
+    yield origin_out, ""
+    out, answer = infer_gen(model, tokenizer, context)
+    print(f"### {context}: ###\n Origin: {origin_out}\n Lora: {out}\n")
+    yield origin_out, answer
 
 def question_answer_infer(model, tokenizer: PreTrainedTokenizer, story, question, max_length=2048):
-    append_text = f"""问题转义为:{question}
-答案为:"""
+    append_text = f"""答案为:"""
 
     input_token_ids = tokenizer.encode(format_context(story, question))
     input_ids = torch.LongTensor([input_token_ids]).to(model.device)

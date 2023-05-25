@@ -17,12 +17,11 @@ def get_context_item(story: str, qa: dict):
     if len(qa['questions']) < 2:
         return None, None, None
     origin_question = qa['questions'][0]
-    context = f"""给你下面的文本和问题，请先给出一个对应问题的同义转述，再给出问题的答案。
+    context = f"""给你下面的文本和问题，请给出问题的答案。
 文本为：{story}
-原始问题为：{origin_question}
+问题为：{origin_question}
 """
-    target = f"""问题转义为：{qa['questions'][1]}
-答案为：{qa['answer']}"""
+    target = f"""答案为：{qa['answer']}"""
     return context, origin_question, target
 
 def format_example_list(example: dict) -> list[dict]:
